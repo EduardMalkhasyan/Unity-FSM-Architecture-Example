@@ -52,7 +52,68 @@ public interface IGameState
         }
     }
 ```
-2. Core Machine
+
+2. Initalization
+```csharp
+ public class SceneContextInstaller : MonoInstaller
+    {
+        public override void InstallBindings()
+        {
+            Container.Bind<AIGameStates>().FromNewComponentOnNewGameObject().AsTransient();
+            InstallGameStates<MainAbstractGameState>();
+            InstallGameStates<AIAbstractGameState>();
+        }
+
+        public void InstallGameStates<T>()
+        {
+            var assembly = Assembly.GetAssembly(typeof(T));
+
+            FindAssemblyTypes.FindDerivedTypesFromAssembly(assembly, typeof(T), true).ForEach(
+                 (type) =>
+                 {
+                     if (type.IsAbstract == false)
+                     {
+                         Container.UnbindInterfacesTo(type);
+                         Container.BindInterfacesAndSelfTo(type).AsSingle();
+                     }
+                 });
+        }
+    }
+
+ public class FindAssemblyTypes
+    {
+        public static IEnumerable<Type> FindDerivedTypesFromAssembly(Assembly assembly, Type baseType, bool classOnly)
+        {
+            if (assembly == null)
+                throw new ArgumentNullException("assembly", "Assembly must be defined");
+
+            if (baseType == null)
+                throw new ArgumentNullException("baseType", "Parent Type must be defined");
+
+            var types = assembly.GetTypes();
+
+            foreach (var type in types)
+            {
+                if (classOnly && !type.IsClass)
+                    continue;
+
+                if (baseType.IsInterface)
+                {
+                    var it = type.GetInterface(baseType.FullName);
+
+                    if (it != null)
+                        yield return type;
+                }
+                else if (type.IsSubclassOf(baseType))
+                {
+                    yield return type;
+                }
+            }
+        }
+    }
+```
+
+3. Core Machine
 ```csharp
  public abstract class MainAbstractGameState : IGameState
     {
@@ -117,7 +178,7 @@ public interface IGameState
         }
     }
 ```
-3. AI Machine
+4. AI Machine
 ```csharp
  public abstract class AIAbstractGameState : IGameState
     {
