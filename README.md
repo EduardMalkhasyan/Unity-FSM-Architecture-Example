@@ -18,7 +18,7 @@ This example employs key plugins and design patterns to establish a robust archi
 
 ## Design Patterns:
 
-1. **Core System (State Machine):** Organizes the core architecture using a State Machine for clarity and control.
+1. **Core System (State Machine):** Organizes the core architecture using a State Machine for clarity and control [Git Page](https://github.com/EduardMalkhasyan/Unity-Architecture-Example/tree/main/Example%20Scripts/Main%20State%20Machine).
 2. **Helper (Object Pool):** Implements an Object Pool pattern to efficiently manage and reuse objects [Git Page](https://github.com/EduardMalkhasyan/Unity-Architecture-Example/blob/main/Example%20Scripts/Tools/ObjectPool.cs).
 
 ## Realization Examples:
