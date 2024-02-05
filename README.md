@@ -251,5 +251,12 @@ public interface IGameState
     }
 ```
 ### Final Result:
+1. Having mutiple UI screent with no confusion
+2. States can bind not only for UI and some logic, but can travel also in game settings like AI realization or some other
+3. Can be easly refactored, no Monobehaviur addiction, No Corutine addiction
+4. Optimazed for mobile devices because of Addressables, Low use of Update thanks to UniTask, and no scene reaload system thanks to Zenject and SelfReset Interface
+
+Games with this archictecture can be find in this [Link](https://bugigames.com/)
+
 <img width="758" alt="Screenshot_1" src="https://github.com/EduardMalkhasyan/Unity-Architecture-Example/assets/78969017/101d3895-2d6e-4ec1-a560-6919f14962c1">
 
