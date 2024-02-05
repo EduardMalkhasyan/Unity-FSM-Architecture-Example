@@ -25,7 +25,7 @@ This example employs key plugins and design patterns to establish a robust archi
 
 State Machine realization in project, where it can be used as core game states where state will use some game logic and UI space his inside, also can be realized as in game components like - AI state machine 
 
-1. Initial Interface
+1. Initial Machine
 ```csharp
 public interface IGameState
     {
