@@ -18,3 +18,28 @@ This project employs key plugins and design patterns to establish a robust archi
 
 1. **Core System (State Machine):** Organizes the core architecture using a State Machine for clarity and control.
 2. **Helper (Object Pool):** Implements an Object Pool pattern to efficiently manage and reuse objects.
+
+```csharp
+public override void InstallBindings()
+        {
+            Container.Bind<GameReset>().AsSingle();
+            Container.Bind<FoodStackSorter>().AsTransient();
+            Container.Bind<AIGameStates>().FromNewComponentOnNewGameObject().AsTransient();
+            InstallGameStates<MainAbstractGameState>();
+            InstallGameStates<AIAbstractGameState>();
+        }
+
+        public void InstallGameStates<T>()
+        {
+            var assembly = Assembly.GetAssembly(typeof(T));
+
+            FindAssemblyTypes.FindDerivedTypesFromAssembly(assembly, typeof(T), true).ForEach(
+                 (type) =>
+                 {
+                     if (type.IsAbstract == false)
+                     {
+                         Container.UnbindInterfacesTo(type);
+                         Container.BindInterfacesAndSelfTo(type).AsSingle();
+                     }
+                 });
+        }```
