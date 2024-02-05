@@ -11,7 +11,6 @@ namespace BugiGames.Main
     public class Bootstrap : MonoBehaviour
     {
         [Inject] private MainGameStates mainGameStates;
-        [Inject] private AdsController adsController;
         [Inject] private MainCanvas mainCanvas;
         [Inject] private Player player;
 
@@ -20,12 +19,11 @@ namespace BugiGames.Main
             player.Deactivate();
             player.Setup();
             mainCanvas.ScreenSpaceOverlay();
-            ShopData.Value.CheckIfShopItemsIsRight();
             GameSettings.Value.InitSettings();
             mainGameStates.EnterState<EnterImmediatePlayState>();
 
 #if !PROJECT_DEBUGGER
-            adsController.Initialize();
+            // Can be use in production release
 #endif
         }
     }
