@@ -25,7 +25,7 @@ This project employs key plugins and design patterns to establish a robust archi
 
 State Machine realization in project, where it can be used as core game states where state will bind some game logic and UI space his inside, also can be realized as in game components like - AI state machine 
 
-1.
+1. Initial Interface
 ```csharp
 public interface IGameState
     {
@@ -33,14 +33,88 @@ public interface IGameState
         void Exit();
         void Tick();
     }
+
+  public class StateMachine
+    {
+        public Type CurrentStateClass => (currentState != null) ? currentState.GetType() : null;
+        private IGameState currentState;
+
+        public void Tick()
+        {
+            currentState?.Tick();
+        }
+
+        public void SetState(IGameState state)
+        {
+            currentState?.Exit();
+            currentState = state;
+            currentState.Enter();
+        }
+    }
 ```
-2.
+2. Core Machine
 ```csharp
  public abstract class MainAbstractGameState : IGameState
     {
         public abstract void Enter();
         public abstract void Exit();
         public virtual void Tick() { }
+    }
+
+  public class MainGameStates : MonoBehaviour
+    {
+        [Inject] private DiContainer container;
+        private StateMachine stateMachine;
+        public System.Type CurrentStateType => stateMachine.CurrentStateClass;
+
+        private void Awake()
+        {
+            stateMachine = new StateMachine();
+        }
+
+        private void FixedUpdate()
+        {
+            stateMachine.Tick();
+        }
+
+        public void EnterState<T>() where T : MainAbstractGameState
+        {
+            if (stateMachine.CurrentStateClass == typeof(T)) return;
+            DebugColor.LogBlue($"Entering state: {typeof(T)}");
+            var state = container.Resolve<T>();
+            stateMachine.SetState(state);
+        }
+    }
+
+// Example realization
+   public class PlayGameState : MainAbstractGameState
+    {
+        [Inject] private UIScreensController screensController;
+        [Inject] private VirtualCamera virtualCamera;
+        [Inject] private MainGameStates mainGameStates;
+        [Inject] private TutorialState tutorialState;
+        [Inject] private Kitchen kitchen;
+
+        public override void Enter()
+        {
+            screensController.ShowInstantUIScreen(UIScreenEnum.Gameplay);
+            virtualCamera.SwitchCamera(VirtualCameraType.Close);
+
+            kitchen.ActivateKitchen();
+            TutorialObserver.OnTutorial += EnterTutorialDemonstration;
+        }
+
+        public override void Exit()
+        {
+            TutorialObserver.OnTutorial -= EnterTutorialDemonstration;
+        }
+
+        private void EnterTutorialDemonstration(TutorialEnum tutorialEnum)
+        {
+            var preset = TutorialProps.Value.GetTutorialPresetKVP(tutorialEnum);
+            tutorialState.Setup(preset.tutorialObject, tutorialEnum);
+            mainGameStates.EnterState<TutorialState>();
+        }
     }
 ```
 
