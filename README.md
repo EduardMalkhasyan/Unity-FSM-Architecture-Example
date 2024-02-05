@@ -117,4 +117,76 @@ public interface IGameState
         }
     }
 ```
+3. AI Machine
+```csharp
+ public abstract class AIAbstractGameState : IGameState
+    {
+        public abstract void Enter();
+        public abstract void Exit();
+        public virtual void Tick() { }
+    }
+
+ [InfoBox("This component is bound 'FromNewComponentOnNewGameObject' and 'AsTransient' for multiple uses in AI space")]
+    public class AIGameStates : MonoBehaviour
+    {
+        [Inject] private DiContainer container;
+        private StateMachine stateMachine;
+        public System.Type CurrentStateType => stateMachine.CurrentStateClass;
+
+        private void Awake()
+        {
+            stateMachine = new StateMachine();
+        }
+
+        private void FixedUpdate()
+        {
+            stateMachine.Tick();
+        }
+
+        public void EnterState<T>(bool canShowDebug = true) where T : AIAbstractGameState
+        {
+            if (stateMachine.CurrentStateClass == typeof(T)) return;
+
+            if (canShowDebug)
+            {
+                DebugColor.LogBlue($"AI entering state: {typeof(T)}", bold: true);
+            }
+
+            var state = container.Resolve<T>();
+            stateMachine.SetState(state);
+        }
+    }
+
+// Example realization
+ public class AIWorkerSorterGoToCookingPlaceState : AIAbstractGameState
+    {
+        [Inject] private AIWorkerSorter workerSorter;
+
+        public override void Enter()
+        {
+            workerSorter.PlaySimpleWalkAnimation();
+            workerSorter.GoToCookingPlace(OnComplete: () => { EnterPickupPlaceState(); });
+        }
+
+        public override void Exit()
+        {
+
+        }
+
+        public async void EnterPickupPlaceState()
+        {
+            try
+            {
+                workerSorter.PlayIdleWithItemAnimation();
+                await UniTask.WaitUntil(() => workerSorter.FoodStack.AvailableStackIsEmpty() == false);
+
+                workerSorter.EnterState<AIWorkerSorterGoToPickupPlaceState>();
+            }
+            catch (Exception error)
+            {
+                Debug.LogWarning(error);
+            }
+        }
+    }
+```
 
