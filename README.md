@@ -21,5 +21,8 @@ This project employs key plugins and design patterns to establish a robust archi
 1. **Core System (State Machine):** Organizes the core architecture using a State Machine for clarity and control.
 2. **Helper (Object Pool):** Implements an Object Pool pattern to efficiently manage and reuse objects.
 
+## Realization Examples:
+
+State Machine realization in project, where it can be used as core game states where state will bind some game logic and UI space his inside, also can be realized as in game components like - AI state machine 
 ```csharp
 ```
