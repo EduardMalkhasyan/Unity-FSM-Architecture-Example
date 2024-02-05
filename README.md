@@ -5,15 +5,16 @@ This project employs key plugins and design patterns to establish a robust archi
 ## Core Plugins:
 
 1. **Zenject:** Manages dependency injection and facilitates link passing through its DI containers. [Link](https://github.com/Mathijs-Bakker/Extenject)
-2. **Addressables:** Empowers a versatile content loading system, supporting both remote and local resources.
-3. **UniTask:** Enhances asynchronous method handling, promoting efficient task execution.
+2. **Addressables:** Empowers a versatile content loading system, supporting both remote and local resources. [Link](https://docs.unity3d.com/Packages/com.unity.addressables@0.8/manual/AddressableAssetsGettingStarted.html)
+3. **UniTask:** Enhances asynchronous method handling, promoting efficient task execution. [Link](https://github.com/Cysharp/UniTask)
 
 ### Helper Plugins:
 
-1. **UniRx:** Streamlines event handling for improved code structure.
-2. **DOTween:** Drives smooth animations through a powerful tweening engine.
-3. **Cinemachine:** Provides a flexible and adaptive camera system.
-4. **Odin Inspector:** Unity extension for improved Editor UI
+1. **UniRx:** Streamlines event handling for improved code structure. [Link](https://github.com/neuecc/UniRx)
+2. **DOTween:** Drives smooth animations through a powerful tweening engine. [Link](https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676)
+3. **Cinemachine:** Provides a flexible and adaptive camera system. [Link](https://unity.com/unity/features/editor/art-and-design/cinemachine)
+4. **Odin Inspector:** Unity extension for improved Editor UI. [Link](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041)
+4. **Newtonsoft Json:** high-performance JSON framework for .NET. [Link](https://github.com/applejag/Newtonsoft.Json-for-Unity)
 
 ## Design Patterns:
 
