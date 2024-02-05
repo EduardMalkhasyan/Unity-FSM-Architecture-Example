@@ -1,6 +1,6 @@
 # Unity Architecture Example
 
-This project employs key plugins and design patterns to establish a robust architecture:
+This example employs key plugins and design patterns to establish a robust architecture:
 
 ## Core Plugins:
 
