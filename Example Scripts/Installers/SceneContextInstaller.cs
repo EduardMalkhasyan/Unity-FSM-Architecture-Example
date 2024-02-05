@@ -16,17 +16,8 @@ namespace BugiGames.Installer
         public override void InstallBindings()
         {
             Container.Bind<GameReset>().AsSingle();
-            Container.Bind<AdsController>().AsSingle();
-            Container.Bind<AnalyticsEventManager>().AsSingle();
-            Container.Bind<OpenAppLink>().AsSingle();
-
-            Container.BindInterfacesAndSelfTo<PurchaseManager>().AsSingle();
-            Container.Bind<InitializeGamingServices>().AsSingle();
-            Container.Bind<UserWarningGooglePlayStore>().AsSingle();
             Container.Bind<FoodStackSorter>().AsTransient();
-
             Container.Bind<AIGameStates>().FromNewComponentOnNewGameObject().AsTransient();
-
             InstallGameStates<MainAbstractGameState>();
             InstallGameStates<AIAbstractGameState>();
         }
