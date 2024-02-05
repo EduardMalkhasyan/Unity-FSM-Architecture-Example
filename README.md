@@ -250,4 +250,6 @@ public interface IGameState
         }
     }
 ```
+### Final Result:
+<img width="758" alt="Screenshot_1" src="https://github.com/EduardMalkhasyan/Unity-Architecture-Example/assets/78969017/101d3895-2d6e-4ec1-a560-6919f14962c1">
 
