@@ -23,7 +23,7 @@ This example employs key plugins and design patterns to establish a robust archi
 
 ## Realization Examples:
 
-State Machine realization in project, where it can be used as core game states where state will bind some game logic and UI space his inside, also can be realized as in game components like - AI state machine 
+State Machine realization in project, where it can be used as core game states where state will use some game logic and UI space his inside, also can be realized as in game components like - AI state machine 
 
 1. Initial Interface
 ```csharp
@@ -251,10 +251,10 @@ public interface IGameState
     }
 ```
 ### Final Result:
-1. Having mutiple UI screent with no confusion
-2. States can bind not only for UI and some logic, but can travel also in game settings like AI realization or some other
+1. Having mutiple UI screens with no confusion
+2. States can used not only for UI and some logic, but can travel also in game settings like AI realization or some other
 3. Can be easly refactored, no Monobehaviur addiction, No Coroutine addiction
-4. Optimazed for low mobile devices (Until 2GB Ram 2016 year release mobile - with 50-60 fps benchmark and 60+ minutes gameplay with no warming up phone and droping fps) because of Addressables, Low use of Update thanks to UniTask, and no scene reaload system thanks to Zenject and SelfReset Interface and more. 
+4. Optimazed for low mobile devices (Until 2GB Ram 2016 year release mobile - with 50-60 fps benchmark and 60+ minutes gameplay with no warming up phone and droping fps) because of Addressables, Low use of Update thanks to UniTask, and no scene reload system thanks to Zenject and SelfReset Interface and more. 
 
 Games with this archictecture can be find in this [Link](https://bugigames.com/)
 
