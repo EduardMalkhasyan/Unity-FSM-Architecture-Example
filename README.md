@@ -253,8 +253,8 @@ public interface IGameState
 ### Final Result:
 1. Having mutiple UI screent with no confusion
 2. States can bind not only for UI and some logic, but can travel also in game settings like AI realization or some other
-3. Can be easly refactored, no Monobehaviur addiction, No Corutine addiction
-4. Optimazed for mobile devices because of Addressables, Low use of Update thanks to UniTask, and no scene reaload system thanks to Zenject and SelfReset Interface
+3. Can be easly refactored, no Monobehaviur addiction, No Coroutine addiction
+4. Optimazed for low mobile devices (Until 2GB Ram 2016 year release mobile - with 50-60 fps benchmark and 60+ minutes gameplay with no warming up phone and droping fps) because of Addressables, Low use of Update thanks to UniTask, and no scene reaload system thanks to Zenject and SelfReset Interface
 
 Games with this archictecture can be find in this [Link](https://bugigames.com/)
 
