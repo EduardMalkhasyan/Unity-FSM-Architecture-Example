@@ -23,6 +23,8 @@ This project employs key plugins and design patterns to establish a robust archi
 
 ## Realization Examples:
 
-State Machine realization in project, where it can be used as core game states where state will bind some game logic and UI space his inside, also can be realized as in game components like - AI state machine 
+State Machine realization in project, where it can be used as core game states
+where state will bind some game logic and UI space his inside, also can be realized
+as in game components like - AI state machine 
 ```csharp
 ```
