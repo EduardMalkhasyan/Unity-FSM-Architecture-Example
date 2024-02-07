@@ -1,4 +1,4 @@
-# Unity Architecture Example
+# Unity FSM Architecture Example
 
 This example employs key plugins and design patterns to establish a robust architecture:
 
@@ -18,12 +18,12 @@ This example employs key plugins and design patterns to establish a robust archi
 
 ## Design Patterns:
 
-1. **Core System (State Machine):** Organizes the core architecture using a State Machine for clarity and control [Git Page](https://github.com/EduardMalkhasyan/Unity-Architecture-Example/tree/main/Example%20Scripts/Main%20State%20Machine).
+1. **Core System (Finite State Machine):** Organizes the core architecture using a FSM for clarity and control [Git Page](https://github.com/EduardMalkhasyan/Unity-Architecture-Example/tree/main/Example%20Scripts/Main%20State%20Machine).
 2. **Helper (Object Pool):** Implements an Object Pool pattern to efficiently manage and reuse objects [Git Page](https://github.com/EduardMalkhasyan/Unity-Architecture-Example/blob/main/Example%20Scripts/Tools/ObjectPool.cs).
 
 ## Realization Examples:
 
-State Machine realization in project, where it can be used as core game states where state will use some game logic and UI space his inside, also can be realized as in game components like - AI state machine 
+Finite State Machine realization in project, where it can be used as core game states where state will use some game logic and UI space his inside, also can be realized as in game components like - AI state machine 
 
 1. Initial Machine
 ```csharp
