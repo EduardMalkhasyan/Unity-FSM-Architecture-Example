@@ -8,14 +8,6 @@ This example employs key plugins and design patterns to establish a robust archi
 2. **Addressables:** Empowers a versatile content loading system, supporting both remote and local resources. [Link](https://docs.unity3d.com/Packages/com.unity.addressables@0.8/manual/AddressableAssetsGettingStarted.html)
 3. **UniTask:** Enhances asynchronous method handling, promoting efficient task execution. [Link](https://github.com/Cysharp/UniTask)
 
-### Helper Plugins:
-
-1. **UniRx:** Streamlines event handling for improved code structure. [Link](https://github.com/neuecc/UniRx)
-2. **DOTween:** Drives smooth animations through a powerful tweening engine. [Link](https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676)
-3. **Cinemachine:** Provides a flexible and adaptive camera system. [Link](https://unity.com/unity/features/editor/art-and-design/cinemachine)
-4. **Odin Inspector:** Unity extension for improved Editor UI. [Link](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041)
-4. **Newtonsoft Json:** high-performance JSON framework for .NET. [Link](https://github.com/applejag/Newtonsoft.Json-for-Unity)
-
 ## Design Pattern:
 
 1. **Core System (Finite State Machine):** Organizes the core architecture using a FSM for clarity and control [Git Page](https://github.com/EduardMalkhasyan/Unity-Architecture-Example/tree/main/Example%20Scripts/Main%20State%20Machine).
