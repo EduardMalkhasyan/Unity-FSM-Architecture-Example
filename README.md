@@ -16,10 +16,9 @@ This example employs key plugins and design patterns to establish a robust archi
 4. **Odin Inspector:** Unity extension for improved Editor UI. [Link](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041)
 4. **Newtonsoft Json:** high-performance JSON framework for .NET. [Link](https://github.com/applejag/Newtonsoft.Json-for-Unity)
 
-## Design Patterns:
+## Design Pattern:
 
 1. **Core System (Finite State Machine):** Organizes the core architecture using a FSM for clarity and control [Git Page](https://github.com/EduardMalkhasyan/Unity-Architecture-Example/tree/main/Example%20Scripts/Main%20State%20Machine).
-2. **Helper (Object Pool):** Implements an Object Pool pattern to efficiently manage and reuse objects [Git Page](https://github.com/EduardMalkhasyan/Unity-Architecture-Example/blob/main/Example%20Scripts/Tools/ObjectPool.cs).
 
 ## Realization Examples:
 
